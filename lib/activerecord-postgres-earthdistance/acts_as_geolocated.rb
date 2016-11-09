@@ -5,9 +5,8 @@ module ActiveRecordPostgresEarthdistance
     module ClassMethods
       def acts_as_geolocated(options = {})
         cattr_accessor :latitude_column, :longitude_column, :through_table
-        self.latitude_column = options[:lat] || (column_names.include?("lat") ? "lat" : "latitude")
-        self.longitude_column = options[:lng] ||
-                                (column_names.include?("lng") ? "lng" : "longitude")
+        self.latitude_column = options[:lat] || "lat"
+        self.longitude_column = options[:lng] || "lng"
         self.through_table = options[:through]
       end
 
